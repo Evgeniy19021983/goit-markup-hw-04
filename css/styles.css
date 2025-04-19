@@ -31,12 +31,11 @@ body {
     padding: 0 15px;
     margin-left: auto;
     margin-right: auto;
-    /* Видалено border: 1px solid #E7E9FC */
 }
 
 /* Хедер */
 .header {
-    border-bottom: 1px solid #E7E9FC; 
+    border-bottom: 1px solid #E7E9FC;
 }
 
 .header .container {
@@ -80,6 +79,23 @@ body {
     color: #2E2F42;
     padding: 24px 0;
     display: inline-block;
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link--active {
+    color: #404BBF;
+}
+
+.nav-link--active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 4px;
+    background-color: #404BBF;
+    border-radius: 2px;
 }
 
 .nav-link:hover,
@@ -102,6 +118,7 @@ body {
     letter-spacing: 0.02em;
     color: #434455;
     display: inline-block;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-link:hover,
@@ -111,7 +128,11 @@ body {
 
 /* Герой */
 .hero {
-    background-color: #2E2F42;
+    background: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), 
+                url('../images/people-office 1.jpg') no-repeat center center;
+    background-size: cover;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 188px 0;
 }
 
@@ -141,6 +162,7 @@ body {
     display: block;
     margin: 0 auto;
     min-width: 169px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover,
@@ -188,6 +210,21 @@ body {
     width: calc((100% - 72px) / 4);
 }
 
+.feature-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 112px;
+    background-color: #F4F4FD;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.feature-icon {
+    fill: #2E2F42;
+}
+
 .feature-title {
     font-weight: 500;
     font-size: 20px;
@@ -217,7 +254,10 @@ body {
 .team-item {
     width: calc((100% - 72px) / 4);
     background-color: #FFFFFF;
-    border-radius: 0 0 4px 4px; 
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 
+                0px 1px 1px rgba(46, 47, 66, 0.16), 
+                0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .team-content {
@@ -238,6 +278,33 @@ body {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    margin-bottom: 8px;
+}
+
+.social-list {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4D5AE5;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link:hover,
+.social-link:focus {
+    background-color: #404BBF;
+}
+
+.social-icon {
+    fill: #F4F4FD;
 }
 
 /* Портфоліо */
@@ -250,14 +317,51 @@ body {
 }
 
 .portfolio-item {
-    width: calc((100% - 48px) / 3); 
+    width: calc((100% - 48px) / 3);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover {
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 
+                0px 1px 1px rgba(46, 47, 66, 0.16), 
+                0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.portfolio-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4D5AE5;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    padding: 40px 32px;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+}
+
+.portfolio-overlay-text {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #F4F4FD;
 }
 
 .portfolio-content {
     padding: 32px 16px;
     background-color: #FFFFFF;
-    border: 1px solid #E7E9FC; 
-    border-top: none; 
+    border: 1px solid #E7E9FC;
+    border-top: none;
 }
 
 .portfolio-title {
@@ -282,8 +386,13 @@ body {
 }
 
 .footer .container {
-    flex-direction: column;
-    gap: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 120px;
+}
+
+.footer-content {
+    max-width: 264px;
 }
 
 .footer .logo {
@@ -300,7 +409,15 @@ body {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #F4F4FD;
-    max-width: 264px;
+}
+
+.footer-social-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    margin-bottom: 16px;
 }
 
 /* Обнулення відступів для останніх трьох елементів портфоліо */
