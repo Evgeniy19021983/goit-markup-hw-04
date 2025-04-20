@@ -153,6 +153,7 @@ body {
     padding: 188px 0;
 }
 
+
 .hero-title {
     font-weight: 700;
     font-size: 56px;
@@ -439,6 +440,7 @@ body {
 }
 
 .footer .social-list {
+    display: flex;
     gap: 16px;
 }
 
